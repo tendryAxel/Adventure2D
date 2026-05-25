@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ed0b2ad03c42484baf5c736d591d8d5, type: 3}
-  m_Name: PlayerInvetoryData
-  m_EditorClassIdentifier: Assembly-CSharp::ChestContentData
-  MaxCapacity: 1
-  contents: []
+  m_Script: {fileID: 11500000, guid: 21bb79389af593f459709a6fd9883fe6, type: 3}
+  m_Name: StoneData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  nameReference: 

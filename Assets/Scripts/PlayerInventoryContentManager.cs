@@ -15,10 +15,9 @@ public class PlayerInventoryContentManager : AbstractContentManager
 
     void DoInteractAction(InputAction.CallbackContext context)
     {
-        ChestContentData otherContent = otherContentActuallyInteracting.GetContentData();
         MoveTo(
-            otherContent.GetContents()[0],
-            otherContent
+            otherContentActuallyInteracting.GetContents()[0],
+            otherContentActuallyInteracting
         );
     }
 }

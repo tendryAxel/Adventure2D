@@ -1,45 +1,94 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AbstractContentManager : MonoBehaviour
 {
-    // TODO: rename that to AnyContentData
     [SerializeField]
-    private ChestContentData chestContent;
+    protected int MaxCapacity;
 
-    public ChestContentData GetContentData()
+    [SerializeField]
+    protected List<ItemData> contents;
+
+    // Modification Action register
+    private OnUpdateActionsRegister<int> onContentCountChange = new();
+
+    public OnUpdateActionsRegister<int> GetOnContentCountChange()
     {
-        return chestContent;
+        return onContentCountChange;
     }
 
-    public bool CanBeMovedInto(ItemData item)
+    protected void UpdateContentCount()
     {
-        return IsNotFull();
+        onContentCountChange.Update(contents.Count);
     }
 
-    public bool IsNotFull()
+    protected int GetMaxCapacity()
     {
-        return chestContent.GetContentCount() < chestContent.GetMaxCapacity();
+        return MaxCapacity;
     }
 
-    public void MoveTo(ItemData item, ChestContentData from)
+    public List<ItemData> GetContents()
     {
-        if (!CanBeMovedInto(item))
+        return contents;
+    }
+
+    protected int GetContentCount()
+    {
+        return contents.Count;
+    }
+
+    protected void AddContents(ItemData item)
+    {
+        contents.Add(item);
+        UpdateContentCount();
+    }
+
+    protected void RemoveFromContents(ItemData item)
+    {
+        if (!contents.Contains(item))
         {
-            Debug.LogWarning("Item " + item + " cannot be moved into " + this);
+            throw new ContainerDontContainException(this, item);
+        }
+        contents.Remove(item);
+        UpdateContentCount();
+    }
+
+    protected bool IsNotFull()
+    {
+        return GetContentCount() < GetMaxCapacity();
+    }
+
+    protected void MoveTo(ItemData item, AbstractContentManager from)
+    {
+        if (!IsNotFull())
+        {
+            throw new IsContentFullException(this);
         }
         /*
         Debug.Log("Start exchange... between " + from + " to " + this);
         Debug.Log("From content: " + from.GetContents());
-        Debug.Log("To content: " + chestContent.GetContents());
+        Debug.Log("To content: " + GetContents());
         */
         
         from.RemoveFromContents(item);
-        chestContent.AddContents(item);
+        AddContents(item);
         
         /*
         Debug.Log("End exchange... between " + from + " to " + this);
         Debug.Log("From content: " + from.GetContents());
-        Debug.Log("To content: " + chestContent.GetContents());
+        Debug.Log("To content: " + GetContents());
         */
     }
+}
+
+[System.Serializable]
+public class IsContentFullException : System.Exception
+{
+    public IsContentFullException(AbstractContentManager container) : base("Conatiner " + container + " is full") { }
+}
+
+[System.Serializable]
+public class ContainerDontContainException : System.Exception
+{
+    public ContainerDontContainException(AbstractContentManager container, ItemData item) : base("Container " + container + " don't any contains " + item) { }
 }
