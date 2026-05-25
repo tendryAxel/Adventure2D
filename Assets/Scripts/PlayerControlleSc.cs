@@ -36,7 +36,7 @@ public class PlayerControlleSc : MonoBehaviour
 
     void Update()
     {
-        animator.SetFloat("speed", velocity.magnitude);
+        animator.SetBool("moving", velocity.magnitude > 0);
         rb2d.linearVelocity = velocity;
     }
 }
