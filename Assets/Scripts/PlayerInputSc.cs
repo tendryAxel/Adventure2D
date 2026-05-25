@@ -9,16 +9,22 @@ public class PlayerInputSc : MonoBehaviour
     // Actions references
     [SerializeField]
     private InputActionReference move;
+    [SerializeField]
+    private InputActionReference interactActionReference;
 
     // Functions references
     private List<ActionInputContext> moveActions = new();
     private List<ActionInputContext> moveActionsCancel = new();
+    private List<ActionInputContext> interactActions = new();
 
     void OnEnable()
     {
         move.action.Enable();
         move.action.performed += MoveActions;
         move.action.canceled += MoveActionsCancel;
+
+        interactActionReference.action.Enable();
+        interactActionReference.action.performed += InteractAtcions;
     }
 
     void OnDisable()
@@ -27,8 +33,12 @@ public class PlayerInputSc : MonoBehaviour
         move.action.canceled -= MoveActionsCancel;
         moveActions.Clear();
         moveActionsCancel.Clear();
+
+        interactActionReference.action.performed -= InteractAtcions;
+        interactActions.Clear();
     }
 
+    // Move Action
     void MoveActions(InputAction.CallbackContext context)
     {
         foreach (ActionInputContext action in moveActions)
@@ -53,5 +63,19 @@ public class PlayerInputSc : MonoBehaviour
     public void RegisterMoveActionsCancel(ActionInputContext action)
     {
         moveActionsCancel.Add(action);
+    }
+
+    // Interact Action
+    void InteractAtcions(InputAction.CallbackContext context)
+    {
+        foreach (ActionInputContext action in interactActions)
+        {
+            action(context);
+        }
+    }
+
+    public void RegisterInteractActions(ActionInputContext action)
+    {
+        interactActions.Add(action);
     }
 }
