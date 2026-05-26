@@ -19491,8 +19491,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   MaxCapacity: 10
   contents: []
-  playerInput: {fileID: 1952959206}
-  otherContentActuallyInteracting: {fileID: 7057427804608024290}
 --- !u!114 &1952959215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19508,6 +19506,8 @@ MonoBehaviour:
   interactionImage: {fileID: 7433338533053954386, guid: 2a043e2e2bc56734cbc820e98992994c,
     type: 3}
   interactionText: Empty for now
+  playerInputSc: {fileID: 1952959206}
+  playerInventoryContentManager: {fileID: 1952959214}
 --- !u!1 &2123322023
 GameObject:
   m_ObjectHideFlags: 0
@@ -19645,18 +19645,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b03a09ba4c702645b2aaa0dcc8ad85a, type: 3}
---- !u!114 &7057427804608024290 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4833332393077951352, guid: 2b03a09ba4c702645b2aaa0dcc8ad85a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1729370499643955360}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0dc62f504097f748aa2adde94d9e6b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AbstractContentManager
 --- !u!1001 &8513589264160640713
 PrefabInstance:
   m_ObjectHideFlags: 0

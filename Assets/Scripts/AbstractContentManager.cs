@@ -58,7 +58,7 @@ public class AbstractContentManager : MonoBehaviour
         return GetContentCount() < GetMaxCapacity();
     }
 
-    protected void MoveTo(ItemData item, AbstractContentManager from)
+    public void MoveHere(ItemData item, AbstractContentManager from)
     {
         if (!IsNotFull())
         {

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerEnvInteractionSc : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class PlayerEnvInteractionSc : MonoBehaviour
 
     [SerializeField]
     private string interactionText;
+    
+    // Inputs
+    [SerializeField]
+    private PlayerInputSc playerInputSc;
+
+    [SerializeField]
+    private PlayerInventoryContentManager playerInventoryContentManager;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -48,11 +56,42 @@ public class PlayerEnvInteractionSc : MonoBehaviour
             return;
         }
 
-        Collider2D lastInteractable = collisions[collisions.Count - 1];
-        ItemData lastInteractableInfo = GetItemInfo(lastInteractable);
+        ItemData lastInteractableInfo = GetLastInteractableData();
         
         interactionText = lastInteractableInfo.ItemName();
         interactionImage = lastInteractableInfo.ItemImage();
         MainHUDManagement.GetInstance().SetInteractionItem(interactionText, interactionImage);
+    }
+
+    Collider2D GetLastInteractable()
+    {
+        return collisions[collisions.Count - 1];
+    }
+
+    ItemData GetLastInteractableData()
+    {
+        return GetItemInfo(GetLastInteractable());
+    }
+
+    void Start()
+    {
+        playerInputSc.RegisterInteractActions(InteractionInputAction);
+    }
+
+    void InteractionInputAction(InputAction.CallbackContext context)
+    {
+        if (collisions.Count == 0)
+        {
+            return;
+        }
+
+        // TODO: next thing will be to separate the pick-up and open content child
+        // that way we can open a window only if the open content is present
+        AbstractContentManager contentManager = GetLastInteractable().GetComponent<AbstractContentManager>();
+
+        if (contentManager != null)
+        {
+            playerInventoryContentManager.MoveHere(contentManager.GetContents().Last(), contentManager);
+        }
     }
 }
