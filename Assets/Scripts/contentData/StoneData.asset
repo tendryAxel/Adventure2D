@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21bb79389af593f459709a6fd9883fe6, type: 3}
   m_Name: StoneData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  nameReference: 
+  itemName: stone
+  itemImage: {fileID: 0}
+  itemSprite: {fileID: 21300102, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}

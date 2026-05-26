@@ -5,5 +5,16 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     [SerializeField]
-    private string nameReference;
+    private string itemName;
+    public string ItemName()
+    {
+        return itemName;
+    }
+
+    [SerializeField]
+    private Texture2D itemImage;
+    public Texture2D ItemImage()
+    {
+        return itemImage;
+    }
 }

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21bb79389af593f459709a6fd9883fe6, type: 3}
-  m_Name: IronTest
+  m_Name: ChestData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: iron
+  itemName: Chest
   itemImage: {fileID: 0}
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
