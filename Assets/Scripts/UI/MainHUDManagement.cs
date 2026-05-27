@@ -3,10 +3,6 @@ using UnityEngine.UIElements;
 
 public class MainHUDManagement : MonoBehaviour
 {
-    private VisualElement interactionSection;
-    private Image interactionItemImage;
-    private Label interactionItemText;
-
     private static MainHUDManagement instance;
 
     public static MainHUDManagement GetInstance()
@@ -29,9 +25,19 @@ public class MainHUDManagement : MonoBehaviour
         interactionItemImage = interactionSection.Q<Image>("InteractionItemImage");
         interactionItemText = interactionSection.Q<Label>("InteractionItemText");
 
+        // Status bar
+        healthBar = root.Q<ProgressBar>("Health");
+        manaBar = root.Q<ProgressBar>("Mana");
+        levelBar = root.Q<ProgressBar>("Level");
+
         // Clear init stat
         SetInteractionItem(null, null);
     }
+
+    // Interaction
+    private VisualElement interactionSection;
+    private Image interactionItemImage;
+    private Label interactionItemText;
 
     public void SetInteractionItem(string text, Texture2D image)
     {
@@ -48,5 +54,25 @@ public class MainHUDManagement : MonoBehaviour
             // when interaction is setted
             interactionSection.style.right = Length.Percent(0);
         }
+    }
+
+    // Status bar
+    private ProgressBar healthBar;
+    private ProgressBar manaBar;
+    private ProgressBar levelBar;
+
+    public void SetHealth(float health)
+    {
+        healthBar.value = health;
+    }
+
+    public void SetMana(float health)
+    {
+        manaBar.value = health;
+    }
+
+    public void SetLevel(float health)
+    {
+        levelBar.value = health;
     }
 }
