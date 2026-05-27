@@ -28,6 +28,9 @@ public class MainHUDManagement : MonoBehaviour
         interactionSection = root.Q<VisualElement>("InteractionSection");
         interactionItemImage = interactionSection.Q<Image>("InteractionItemImage");
         interactionItemText = interactionSection.Q<Label>("InteractionItemText");
+
+        // Clear init stat
+        SetInteractionItem(null, null);
     }
 
     public void SetInteractionItem(string text, Texture2D image)
