@@ -19491,6 +19491,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   MaxCapacity: 10
   contents: []
+  info:
+    info: {fileID: 0}
 --- !u!114 &1952959215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19708,6 +19710,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4370801272485650120, guid: bb17819ac6da7314786d701016dc33ac,
+        type: 3}
+      propertyPath: info.info
+      value: 
+      objectReference: {fileID: 11400000, guid: bf5d7284ec76a6049ae84906bf352b62,
+        type: 2}
     - target: {fileID: 4370801272485650120, guid: bb17819ac6da7314786d701016dc33ac,
         type: 3}
       propertyPath: MaxCapacity

@@ -1,13 +1,9 @@
-using UnityEngine;
-
-public class GroundedPickableObjecs : MonoBehaviour
+public class GroundedPickableObjecs : AbstractContentManager
 {
-    private AbstractContentManager contentManager;
-
     void Start()
     {
-        contentManager = GetComponent<AbstractContentManager>();
-        contentManager.GetOnContentCountChange().RegisterOnUpdateActions(value => {
+        GetComponent<AbstractContentManager>();
+        GetOnContentCountChange().RegisterOnUpdateActions(value => {
             if (value == 0)
             {
                 Destroy(gameObject);

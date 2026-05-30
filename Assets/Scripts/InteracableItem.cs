@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class InteracableItem : MonoBehaviour
+[System.Serializable]
+public class InteracableItemInfo
 {
     [SerializeField]
     private ItemData info;

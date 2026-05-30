@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7107920177172756241}
   - component: {fileID: 5018217594441397327}
-  - component: {fileID: 4833332393077951352}
   - component: {fileID: 8493214656552046147}
   - component: {fileID: 5766022036696077443}
-  - component: {fileID: 5740097705605559982}
   m_Layer: 20
   m_Name: Stone
   m_TagString: Item
@@ -96,21 +94,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 1
---- !u!114 &4833332393077951352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2190995263921432101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0dc62f504097f748aa2adde94d9e6b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AbstractContentManager
-  MaxCapacity: 1
-  contents:
-  - {fileID: 11400000, guid: d737c50c22378c840b0655fe897d6815, type: 2}
 --- !u!114 &8493214656552046147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3918af543a970d64c84804a067d3fd8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  MaxCapacity: 1
+  contents:
+  - {fileID: 11400000, guid: d737c50c22378c840b0655fe897d6815, type: 2}
+  info:
+    info: {fileID: 11400000, guid: d737c50c22378c840b0655fe897d6815, type: 2}
 --- !u!61 &5766022036696077443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -169,19 +157,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.48339677, y: 0.44741297}
   m_EdgeRadius: 0
---- !u!114 &5740097705605559982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2190995263921432101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b4bdfdc962a05b4cb0c6d23447dce34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteracableItem
-  info: {fileID: 11400000, guid: d737c50c22378c840b0655fe897d6815, type: 2}
 --- !u!1 &8410291127367031261
 GameObject:
   m_ObjectHideFlags: 0

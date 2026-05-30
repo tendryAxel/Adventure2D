@@ -9,6 +9,9 @@ public class AbstractContentManager : MonoBehaviour
     [SerializeField]
     protected List<ItemData> contents;
 
+    [SerializeField]
+    protected InteracableItemInfo info;
+
     // Modification Action register
     private OnUpdateActionsRegister<int> onContentCountChange = new();
 
@@ -78,6 +81,11 @@ public class AbstractContentManager : MonoBehaviour
         Debug.Log("From content: " + from.GetContents());
         Debug.Log("To content: " + GetContents());
         */
+    }
+
+    public InteracableItemInfo GetInfo()
+    {
+        return info;
     }
 }
 

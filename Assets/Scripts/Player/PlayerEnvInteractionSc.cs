@@ -27,7 +27,9 @@ public class PlayerEnvInteractionSc : MonoBehaviour
             return;
         }
 
-        if (!collision.GetComponent<InteracableItem>())
+        InteracableItemInfo info = collision.GetComponent<AbstractContentManager>()?.GetInfo();
+
+        if (info == null)
         {
             Debug.LogWarning("Interaction with " + collision + " that doesn't have any InteracableItem script");
         }
@@ -39,7 +41,7 @@ public class PlayerEnvInteractionSc : MonoBehaviour
 
     ItemData GetItemInfo(Collider2D item)
     {
-        return item.GetComponent<InteracableItem>().GetInfo();
+        return item.GetComponent<AbstractContentManager>().GetInfo().GetInfo();
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -85,13 +87,25 @@ public class PlayerEnvInteractionSc : MonoBehaviour
             return;
         }
 
-        // TODO: next thing will be to separate the pick-up and open content child
-        // that way we can open a window only if the open content is present
         AbstractContentManager contentManager = GetLastInteractable().GetComponent<AbstractContentManager>();
 
-        if (contentManager != null)
+        switch (contentManager)
         {
-            playerInventoryContentManager.MoveHere(contentManager.GetContents().Last(), contentManager);
+            case ChestContentManagement chestContentManagement:
+                {
+                    playerInventoryContentManager.MoveHere(chestContentManagement.GetSelectedItem(), contentManager);
+                    break;
+                }
+            default:
+                {
+                    playerInventoryContentManager.MoveHere(contentManager.GetContents().Last(), contentManager);
+                    break;
+                }
+            case null: 
+                {
+                    Debug.LogWarning("Content manager is null for " + GetLastInteractable());
+                    break;
+                }
         }
     }
 }
